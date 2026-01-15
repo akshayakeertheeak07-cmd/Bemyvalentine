@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Be My Valentine 🩵</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      background: linear-gradient(135deg, #eaf6ff, #f2f2f2);
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 24px;
+      text-align: center;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+      max-width: 360px;
+      width: 90%;
+      z-index: 2;
+    }
+
+    h1 {
+      color: #7fc8f8;
+      font-size: 26px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: #666;
+      font-size: 16px;
+      margin-bottom: 18px;
+    }
+
+    button {
+      padding: 12px 22px;
+      font-size: 16px;
+      border: none;
+      border-radius: 16px;
+      cursor: pointer;
+      margin: 10px;
+    }
+
+    #yes {
+      background: #7fc8f8;
+      color: white;
+    }
+
+    #no {
+      background: #e0e0e0;
+      position: absolute;
+    }
+
+    /* Floating hearts */
+    .heart {
+      position: absolute;
+      font-size: 20px;
+      animation: floatUp 6s linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(100vh) scale(1);
+        opacity: 0;
+      }
+      20% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) scale(1.2);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Floating hearts script -->
+  <script>
+    const colors = ["🩵", "🤍"];
+    setInterval(() => {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.textContent = colors[Math.floor(Math.random() * colors.length)];
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = 4 + Math.random() * 3 + "s";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 7000);
+    }, 400);
+  </script>
+
+  <div class="card">
+    <h1>Hey Saran 🩵</h1>
+    <p>I have something really important to ask you…</p>
+    <h1>Will you be my Valentine? 💌</h1>
+
+    <!-- Spotify Play Button (NEW SONG) -->
+    <iframe style="border-radius:12px; margin:15px 0;"
+      src="https://open.spotify.com/embed/track/1iF0JKo3hIKDDzXNtvyZOg"
+      width="100%" height="80"
+      frameBorder="0"
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+      loading="lazy">
+    </iframe>
+
+    <button id="yes" onclick="yesClicked()">YES 🩵</button>
+    <button id="no" onmouseover="moveNo()">NO 🤭</button>
+  </div>
+
+  <script>
+    function yesClicked() {
+      document.body.innerHTML = `
+        <div style="
+          display:flex;
+          justify-content:center;
+          align-items:center;
+          height:100vh;
+          background:linear-gradient(135deg, #eaf6ff, #f2f2f2);
+          font-family:'Comic Sans MS', cursive;
+          text-align:center;
+          padding:20px;
+        ">
+          <h1 style="color:#7fc8f8;">
+            YAYYYY 🥹🩵<br><br>
+            I’m so happy, Saran 💐<br>
+            You’re my Valentine 💌
+          </h1>
+        </div>
+      `;
+    }
+
+    function moveNo() {
+      const noBtn = document.getElementById("no");
+      const x = Math.random() * (window.innerWidth - 120);
+      const y = Math.random() * (window.innerHeight - 60);
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
+    }
+  </script>
+
+</body>
+</html>
